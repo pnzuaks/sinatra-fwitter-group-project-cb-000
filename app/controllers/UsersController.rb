@@ -37,11 +37,9 @@ class UsersController < ApplicationController
     end
   end
 
-
   get "/failure" do
     erb :"/users/failure"
   end
-
 
   get '/logout' do
     session.clear
@@ -58,10 +56,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def show_sign_up
-    redirect to '/signup'
-  end
-
   def showLoginView
     erb :"/users/login"
   end
@@ -73,7 +67,6 @@ class UsersController < ApplicationController
   def signup_failure
     redirect to '/signup'
   end
-
 
 end
 
