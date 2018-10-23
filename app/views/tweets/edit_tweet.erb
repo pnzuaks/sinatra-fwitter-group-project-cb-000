@@ -1,0 +1,10 @@
+<h1>Edit Tweet</h1>
+
+  <% if Helpers.is_logged_in?(session) %>
+<form method="POST" action="/tweets/<%= @tweet.id %>">
+<textarea rows="4" cols="80" id="content" name="content"><%= @tweet.content%></textarea>
+  <br><br>
+
+  <input id="submit" type="submit" value="Submit">
+</form>
+  <% end %>
