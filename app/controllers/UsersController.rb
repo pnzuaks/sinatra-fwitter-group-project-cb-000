@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   post '/signup' do
     SignUpNewUserCommand.new(params[:username], params[:password], params[:email], self).execute
-    showAllTweets
   end
 
   get "/show" do
@@ -67,6 +66,16 @@ class UsersController < ApplicationController
   def showLoginView
     erb :"/users/login"
   end
+
+  def signup_success
+    redirect to '/tweets'
+  end
+
+  def signup_failure
+    redirect to '/signup'
+  end
+
+
 end
 
 
@@ -79,12 +88,13 @@ class SignUpNewUserCommand
   end
 
   def execute
-    if @username == "" || @password == "" || @email = ""
-      return @controller.show_sign_up
+    if @username == "" || @password == "" || @email == ""
+      return @controller.signup_failure
     end
 
     @user = User.create(username: @username, password: @password, email: @email)
     @user.save
+    @controller.signup_success
   end
 
 end
