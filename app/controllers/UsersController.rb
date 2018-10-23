@@ -16,7 +16,6 @@ class UsersController < ApplicationController
     @tweets = Tweet.all
     @user = User.find(session[:user_id])
     erb :"/users/show"
-
   end
 
   get '/login' do
